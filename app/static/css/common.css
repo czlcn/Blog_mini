@@ -45,6 +45,7 @@ body {
 }
 .article-entry-info .base-info {
     float: left;
+    width: 300px;
 }
 .article-entry-info .main-info {
     float: right;

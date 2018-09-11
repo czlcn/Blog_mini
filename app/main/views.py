@@ -1,13 +1,18 @@
 #coding:utf-8
 from flask import render_template, request, current_app, redirect,\
-    url_for, flash
+    url_for, flash, send_from_directory
 from . import main
 from ..models import Article, ArticleType, article_types, Comment, \
     Follow, User, Source, BlogView
 from .forms import CommentForm
 from .. import db
 
-
+@main.route('/robots.txt')
+@main.route('/sitemap.xml')
+@main.route('/favicon.ico')
+def static_from_root():
+    return send_from_directory(current_app.static_folder, request.path[1:])
+	
 @main.route('/')
 def index():
     BlogView.add_view(db)
